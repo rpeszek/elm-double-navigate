@@ -20,13 +20,11 @@
                 while (document.body.firstChild) {
                         document.body.removeChild(document.body.firstChild);
                 }
-                var conf = {        
-                    layout : "TEST"
-                 }
+                
                 try {
-                   runElmProgram(conf);
+                   runElmProgram();
                 } catch(e) {
-                   Elm.App.fullscreen(conf)
+                   Elm.App.fullscreen()
                 }
         </script>
 

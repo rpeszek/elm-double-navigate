@@ -8814,20 +8814,17 @@ var _elm_lang$navigation$Navigation$subMap = F2(
 	});
 _elm_lang$core$Native_Platform.effectManagers['Navigation'] = {pkg: 'elm-lang/navigation', init: _elm_lang$navigation$Navigation$init, onEffects: _elm_lang$navigation$Navigation$onEffects, onSelfMsg: _elm_lang$navigation$Navigation$onSelfMsg, tag: 'fx', cmdMap: _elm_lang$navigation$Navigation$cmdMap, subMap: _elm_lang$navigation$Navigation$subMap};
 
-var _rpeszek$crud_ex_frontend_elm$Main$emptyModel = {ctor: '_Tuple0'};
-var _rpeszek$crud_ex_frontend_elm$Main$pure = function (x) {
+var _rpeszek$elm_double_navigate$Main$pure = function (x) {
 	return A2(
 		_elm_lang$core$Task$perform,
 		_elm_lang$core$Basics$identity,
 		_elm_lang$core$Task$succeed(x));
 };
-var _rpeszek$crud_ex_frontend_elm$Main$Flags = function (a) {
-	return {layout: a};
-};
-var _rpeszek$crud_ex_frontend_elm$Main$GotoUrlMsg = function (a) {
+var _rpeszek$elm_double_navigate$Main$emptyModel = {ctor: '_Tuple0'};
+var _rpeszek$elm_double_navigate$Main$GotoUrlMsg = function (a) {
 	return {ctor: 'GotoUrlMsg', _0: a};
 };
-var _rpeszek$crud_ex_frontend_elm$Main$showView = A2(
+var _rpeszek$elm_double_navigate$Main$showView = A2(
 	_elm_lang$html$Html$div,
 	{ctor: '[]'},
 	{
@@ -8837,7 +8834,7 @@ var _rpeszek$crud_ex_frontend_elm$Main$showView = A2(
 			{
 				ctor: '::',
 				_0: _elm_lang$html$Html_Events$onClick(
-					_rpeszek$crud_ex_frontend_elm$Main$GotoUrlMsg('#')),
+					_rpeszek$elm_double_navigate$Main$GotoUrlMsg('#')),
 				_1: {ctor: '[]'}
 			},
 			{
@@ -8853,23 +8850,16 @@ var _rpeszek$crud_ex_frontend_elm$Main$showView = A2(
 				{
 					ctor: '::',
 					_0: A2(
-						_elm_lang$html$Html$fieldset,
-						{ctor: '[]'},
+						_elm_lang$html$Html$button,
 						{
 							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$button,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(
-										_rpeszek$crud_ex_frontend_elm$Main$GotoUrlMsg('#url2')),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text('Url2'),
-									_1: {ctor: '[]'}
-								}),
+							_0: _elm_lang$html$Html_Events$onClick(
+								_rpeszek$elm_double_navigate$Main$GotoUrlMsg('#url2')),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Url2'),
 							_1: {ctor: '[]'}
 						}),
 					_1: {ctor: '[]'}
@@ -8877,55 +8867,47 @@ var _rpeszek$crud_ex_frontend_elm$Main$showView = A2(
 			_1: {ctor: '[]'}
 		}
 	});
-var _rpeszek$crud_ex_frontend_elm$Main$DispatchUrlMsg = function (a) {
+var _rpeszek$elm_double_navigate$Main$DispatchUrlMsg = function (a) {
 	return {ctor: 'DispatchUrlMsg', _0: a};
 };
-var _rpeszek$crud_ex_frontend_elm$Main$main = A2(
-	_elm_lang$navigation$Navigation$programWithFlags,
+var _rpeszek$elm_double_navigate$Main$main = A2(
+	_elm_lang$navigation$Navigation$program,
 	function (loc) {
-		return _rpeszek$crud_ex_frontend_elm$Main$DispatchUrlMsg(
+		return _rpeszek$elm_double_navigate$Main$DispatchUrlMsg(
 			A2(_elm_lang$core$Debug$log, 'got location', loc.hash));
 	},
 	{
-		init: F2(
-			function (flags, loc) {
-				return {
-					ctor: '_Tuple2',
-					_0: _rpeszek$crud_ex_frontend_elm$Main$emptyModel,
-					_1: _rpeszek$crud_ex_frontend_elm$Main$pure(
-						_rpeszek$crud_ex_frontend_elm$Main$DispatchUrlMsg(
-							A2(_elm_lang$core$Debug$log, 'got location', loc.hash)))
-				};
-			}),
+		init: function (loc) {
+			return {
+				ctor: '_Tuple2',
+				_0: _rpeszek$elm_double_navigate$Main$emptyModel,
+				_1: _rpeszek$elm_double_navigate$Main$pure(
+					_rpeszek$elm_double_navigate$Main$DispatchUrlMsg(
+						A2(_elm_lang$core$Debug$log, 'got location', loc.hash)))
+			};
+		},
 		update: F2(
 			function (msg, model) {
 				var _p0 = msg;
 				if (_p0.ctor === 'DispatchUrlMsg') {
-					return {ctor: '_Tuple2', _0: _rpeszek$crud_ex_frontend_elm$Main$emptyModel, _1: _elm_lang$core$Platform_Cmd$none};
+					return {ctor: '_Tuple2', _0: _rpeszek$elm_double_navigate$Main$emptyModel, _1: _elm_lang$core$Platform_Cmd$none};
 				} else {
 					return {
 						ctor: '_Tuple2',
-						_0: _rpeszek$crud_ex_frontend_elm$Main$emptyModel,
+						_0: _rpeszek$elm_double_navigate$Main$emptyModel,
 						_1: _elm_lang$navigation$Navigation$newUrl(
 							A2(_elm_lang$core$Debug$log, 'nav to ', _p0._0))
 					};
 				}
 			}),
-		view: _elm_lang$core$Basics$always(_rpeszek$crud_ex_frontend_elm$Main$showView),
+		view: _elm_lang$core$Basics$always(_rpeszek$elm_double_navigate$Main$showView),
 		subscriptions: _elm_lang$core$Basics$always(_elm_lang$core$Platform_Sub$none)
-	})(
-	A2(
-		_elm_lang$core$Json_Decode$andThen,
-		function (layout) {
-			return _elm_lang$core$Json_Decode$succeed(
-				{layout: layout});
-		},
-		A2(_elm_lang$core$Json_Decode$field, 'layout', _elm_lang$core$Json_Decode$string)));
+	})();
 
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
-if (typeof _rpeszek$crud_ex_frontend_elm$Main$main !== 'undefined') {
-    _rpeszek$crud_ex_frontend_elm$Main$main(Elm['Main'], 'Main', undefined);
+if (typeof _rpeszek$elm_double_navigate$Main$main !== 'undefined') {
+    _rpeszek$elm_double_navigate$Main$main(Elm['Main'], 'Main', undefined);
 }
 
 if (typeof define === "function" && define['amd'])
